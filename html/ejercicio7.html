@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <h1>Calculadora de Interés Compuesto</h1>
+    <label for="capitalInicial">Capital Inicial:</label>
+    <input type="number" id="capitalInicial"><br>
+
+    <label for="tasaInteresAnual">Tasa de Interés Anual (%):</label>
+    <input type="number" id="tasaInteresAnual"><br>
+
+    <label for="periodoInversion">Período de Inversión (años):</label>
+    <input type="number" id="periodoInversion"><br>
+
+    <button onclick="calcularInteresCompuesto()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularInteresCompuesto() {
+            const capitalInicial = parseFloat(document.getElementById("capitalInicial").value);
+            const tasaInteresAnual = parseFloat(document.getElementById("tasaInteresAnual").value);
+            const periodoInversion = parseFloat(document.getElementById("periodoInversion").value);
+
+            if (isNaN(capitalInicial) || isNaN(tasaInteresAnual) || isNaN(periodoInversion)) {
+                alert("Ingresa valores numéricos válidos.");
+                return;
+            }
+
+            const tasaInteresDecimal = tasaInteresAnual / 100;
+            const montoFinal = capitalInicial * Math.pow(1 + tasaInteresDecimal, periodoInversion);
+            const resultado = `El monto final es de $${montoFinal.toFixed(2)}`;
+
+            document.getElementById("resultado").textContent = resultado;
+        }
+    </script>
+</body>
+</html>

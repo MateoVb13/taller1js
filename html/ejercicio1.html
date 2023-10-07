@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h1>Adivina el número entre 1 y 100</h1>
+    <p>Escribe un número entre el 1 y el 100</p>
+    <input type="text" autofocus>
+    <button onclick="adivNum()">Adivinar</button>
+    <p id="mensaje"></p>
+
+    <script>
+        const numPorAdivinar = Math.floor(Math.random() * 100) + 1;
+        let numPrueba = 0;
+
+        function adivNum() {
+            const adivNum = document.getElementById("adivNum");
+            const mensaje = document.getElementById("mensaje");
+            const adivinado = parseInt(adivNum.value);
+
+            if (isNaN(adivinado) || adivinado < 1 || adivinado > 100) {
+                mensaje.textContent = "Ingresa un número entre 1 y 100.";
+            }
+            else {
+                numPrueba++;
+                if (adivinado === numPorAdivinar) {
+                    mensaje.textContent = `Adivinaste el número ${numPorAdivinar} en ${numPrueba} intentos.`;
+                    document.getElementById("adivNum").disabled = true;
+                    document.querySelector("button").disabled = true;
+                }
+                else if (adivinado < numPorAdivinar) {
+                    mensaje.textContent = "El número es más alto.";
+                }
+                else {
+                    mensaje.textContent = "El número es más bajo.";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

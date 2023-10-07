@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de Estadísticas de Calificaciones</h1>
+
+    <form>
+        <label for="calificaciones">Ingrese las calificaciones (separadas por comas):</label>
+        <input type="text" id="calificaciones" placeholder="Ejemplo: 85,90,78,92,88">
+        <button type="button" onclick="calcularEstadisticas()">Calcular</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <p>Promedio: <span id="promedio"></span></p>
+    <p>Calificación más alta: <span id="maxima"></span></p>
+    <p>Calificación más baja: <span id="minima"></span></p>
+
+    <script>
+        function calcularEstadisticas() {
+            const calificacionesInput = document.getElementById("calificaciones");
+            const calificacionesTexto = calificacionesInput.value;
+            const calificaciones = calificacionesTexto.split(",").map(Number);
+
+            if (calificaciones.some(isNaN)) {
+                alert("Ingrese calificaciones válidas separadas por comas.");
+                return;
+            }
+
+            if (calificaciones.length === 0) {
+                alert("Ingrese al menos una calificación.");
+                return;
+            }
+
+            let suma = 0;
+            let maxima = calificaciones[0];
+            let minima = calificaciones[0];
+
+            for (let i = 0; i < calificaciones.length; i++) {
+                const calificacion = calificaciones[i];
+
+                suma += calificacion;
+
+                if (calificacion > maxima) {
+                    maxima = calificacion;
+                }
+
+                if (calificacion < minima) {
+                    minima = calificacion;
+                }
+            }
+
+            const promedio = suma / calificaciones.length;
+
+            document.getElementById("promedio").textContent = promedio.toFixed(1);
+            document.getElementById("maxima").textContent = maxima;
+            document.getElementById("minima").textContent = minima;
+        }
+    </script>
+</body>
+</html>
