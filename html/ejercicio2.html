@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo David Villalobos Bertel">
     <title>Ejercicio 2</title>
 </head>
-<body>
-    <h1>Sistema de Registro de Estudiantes</h1>
 
-    <h2>Agregar Estudiante</h2>
+<body>
+    <h1>Registro de Estudiantes</h1>
+    <h3>Agregar Estudiante</h3>
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre"><br><br>
 
@@ -18,52 +20,55 @@
     <label for="identificacion">Número de Identificación:</label>
     <input type="text" id="identificacion">&nbsp;&nbsp;&nbsp;
 
-    <button onclick="agregarEstudiante()">Agregar Estudiante</button>
+    <button onclick="agregarEstud()">Agregar Estudiante</button>
 
     <h2>Buscar Estudiante</h2>
-    <label for="buscarIdentificacion">Número de Identificación a buscar:</label>
-    <input type="text" id="buscarIdentificacion"><br>
-    <button onclick="buscarEstudiante()">Buscar Estudiante</button>
+    <label for="buscarIdentificacion">Buscar número de identificación:</label>
+    <input type="text" id="buscarIdent"><br>
+    <button onclick="buscarEstud()">Buscar Estudiante</button>
 
     <p id="resultado"></p>
 
     <script>
-        const estudiantes = [];
+        const estud = [];
 
-        function agregarEstudiante() {
+        function agregarEstud() {
             const nombre = document.getElementById("nombre").value;
             const edad = document.getElementById("edad").value;
             const identificacion = document.getElementById("identificacion").value;
 
             if (nombre && edad && identificacion) {
                 const estudiante = { nombre, edad, identificacion };
-                estudiantes.push(estudiante);
+                estud.push(estudiante);
 
                 document.getElementById("nombre").value = "";
                 document.getElementById("edad").value = "";
                 document.getElementById("identificacion").value = "";
 
-                alert("Estudiante agregado exitosamente.");
+                alert("Estudiante agregado exitosamente");
             } else {
-                alert("Por favor, completa todos los campos.");
+                alert("Complete todos los campos");
             }
         }
 
-        function buscarEstudiante() {
-            const buscarIdentificacion = document.getElementById("buscarIdentificacion").value;
+        function buscarEstud() {
+            const buscarIdent = document.getElementById("buscarIdent").value;
 
-            if (buscarIdentificacion) {
-                const estudianteEncontrado = estudiantes.find(estudiante => estudiante.identificacion === buscarIdentificacion);
+            if (buscarIdent) {
+                const estudianteEncontrado = estud.find(estudiante => estudiante.identificacion === buscarIdent);
 
                 if (estudianteEncontrado) {
                     document.getElementById("resultado").textContent = `Nombre: ${estudianteEncontrado.nombre}, Edad: ${estudianteEncontrado.edad}, Número de Identificación: ${estudianteEncontrado.identificacion}`;
-                } else {
+                }
+                else {
                     document.getElementById("resultado").textContent = "Estudiante no encontrado.";
                 }
-            } else {
-                alert("Por favor, ingresa un número de identificación para buscar.");
+                } 
+                else {
+                alert("Ingresar número de identificación");
             }
         }
     </script>
 </body>
+
 </html>

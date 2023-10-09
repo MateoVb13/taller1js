@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="Mateo David Villalobos Bertel">
+    <title>Ejercicio 9</title>
 </head>
 <body>
     <h1>Calculadora de Estadísticas de Calificaciones</h1>
 
     <form>
-        <label for="calificaciones">Ingrese las calificaciones (separadas por comas):</label>
-        <input type="text" id="calificaciones" placeholder="Ejemplo: 85,90,78,92,88">
+        <label for="calificaciones">Ingrese las calificaciones:</label>
+        <input type="text" id="calificaciones" placeholder="Ejemplo: 3,1,5,2,4">
         <button type="button" onclick="calcularEstadisticas()">Calcular</button>
     </form>
 
-    <h2>Resultados</h2>
+    <h3>Resultados</h3>
     <p>Promedio: <span id="promedio"></span></p>
     <p>Calificación más alta: <span id="maxima"></span></p>
     <p>Calificación más baja: <span id="minima"></span></p>

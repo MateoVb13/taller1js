@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo David Villalobos Bertel">
     <title>Ejercicio 8</title>
 </head>
 <body>
@@ -20,7 +21,7 @@
     <input type="checkbox" id="numeros"><br>
 
     <label for="caracteresEspeciales">Incluir caracteres especiales:</label>
-    <input type="checkbox" id="caracteresEspeciales"><br>
+    <input type="checkbox" id="caracteresEspeciales"><br><br>
 
     <button onclick="generarContraseña()">Generar Contraseña</button>
 
@@ -35,7 +36,7 @@
             const incluirCaracteresEspeciales = document.getElementById("caracteresEspeciales").checked;
 
             if (!longitud || (!incluirMayusculas && !incluirMinusculas && !incluirNumeros && !incluirCaracteresEspeciales)) {
-                alert("Por favor, selecciona al menos una opción y especifica la longitud de la contraseña.");
+                alert("Selecciona al menos una opción y especifica la longitud de la contraseña.");
                 return;
             }
 

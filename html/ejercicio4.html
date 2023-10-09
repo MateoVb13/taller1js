@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo David Villalobos Bertel">
     <title>Ejercicio 4</title>
 </head>
-<body>
-    <h1>Tabla de Multiplicar</h1>
-    <label for="numero">Selecciona un número:</label>
-    <input type="number" id="numero" min="1" max="10">
-    <label for="filas">Número de filas a mostrar:</label>
-    <input type="number" id="filas" min="1" max="10">
-    <button onclick="mostrarTabla()">Mostrar</button>
 
-    <h2>Tabla de Multiplicar</h2>
-    <table id="tabla">
-    </table>
+<body>
+    <h1>Generador de Tabla de Multiplicar</h1>
+
+    <label for="numero">Seleccione un número:</label>
+    <input type="number" id="numero">
+    <br><br>
+
+    <label for="filas">Seleccione el número de filas:</label>
+    <input type="number" id="filas">
+    <br><br>
+
+    <button onclick="mostrarTabla()">Mostrar Tabla</button>
+
+    <h2 id="resultado"></h2>
 
     <script>
         function mostrarTabla() {
-            const numero = parseInt(document.getElementById("numero").value);
-            const filas = parseInt(document.getElementById("filas").value);
-            const tabla = document.getElementById("tabla");
+            const numeroSeleccionado = parseInt(document.getElementById("numero").value);
+            const filasAMostrar = parseInt(document.getElementById("filas").value);
+            const resultadoElement = document.getElementById("resultado");
 
-            if (isNaN(numero) || isNaN(filas)) {
-                alert("Ingresa números válidos.");
-                return;
-            }
-
-            // Limpia la tabla
-            tabla.innerHTML = "";
-
-            // Crea las filas de la tabla de multiplicar
-            for (let i = 1; i <= filas; i++) {
-                const fila = document.createElement("tr");
-                const multiplicando = document.createElement("td");
-                const multiplicador = document.createElement("td");
-                const resultado = document.createElement("td");
-
-                multiplicando.textContent = i;
-                multiplicador.textContent = "x";
-                resultado.textContent = i * numero;
-
-                fila.appendChild(multiplicando);
-                fila.appendChild(multiplicador);
-                fila.appendChild(resultado);
-
-                tabla.appendChild(fila);
+            if (isNaN(numeroSeleccionado) || isNaN(filasAMostrar)) {
+                resultadoElement.textContent = "Ingrese números válidos.";
+            } else {
+                let tabla = `Tabla de multiplicar del ${numeroSeleccionado}:<br>`;
+                for (let i = 1; i <= filasAMostrar; i++) {
+                    let resultado = numeroSeleccionado * i;
+                    tabla += `${numeroSeleccionado} x ${i} = ${resultado}<br>`;
+                }
+                resultadoElement.innerHTML = tabla;
             }
         }
     </script>
 </body>
+
 </html>

@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo David Villalobos Bertel">
     <title>Ejercicio 7</title>
 </head>
 <body>
     <h1>Calculadora de Interés Compuesto</h1>
-    <label for="capitalInicial">Capital Inicial:</label>
-    <input type="number" id="capitalInicial"><br>
+    <label for="capitalInit">Capital Inicial:</label>
+    <input type="number" id="capitalInit"><br><br>
 
     <label for="tasaInteresAnual">Tasa de Interés Anual (%):</label>
-    <input type="number" id="tasaInteresAnual"><br>
+    <input type="number" id="tasaInteresAnual"><br><br>
 
     <label for="periodoInversion">Período de Inversión (años):</label>
-    <input type="number" id="periodoInversion"><br>
+    <input type="number" id="periodoInversion"><br><br>
 
     <button onclick="calcularInteresCompuesto()">Calcular</button>
 
@@ -22,17 +23,17 @@
 
     <script>
         function calcularInteresCompuesto() {
-            const capitalInicial = parseFloat(document.getElementById("capitalInicial").value);
-            const tasaInteresAnual = parseFloat(document.getElementById("tasaInteresAnual").value);
+            const capitalInit = parseFloat(document.getElementById("capitalInit").value);
+            const interesAnual = parseFloat(document.getElementById("tasaInteresAnual").value);
             const periodoInversion = parseFloat(document.getElementById("periodoInversion").value);
 
-            if (isNaN(capitalInicial) || isNaN(tasaInteresAnual) || isNaN(periodoInversion)) {
+            if (isNaN(capitalInit) || isNaN(interesAnual) || isNaN(periodoInversion)) {
                 alert("Ingresa valores numéricos válidos.");
                 return;
             }
 
-            const tasaInteresDecimal = tasaInteresAnual / 100;
-            const montoFinal = capitalInicial * Math.pow(1 + tasaInteresDecimal, periodoInversion);
+            const interesDecimal = interesAnual / 100;
+            const montoFinal = capitalInit * Math.pow(1 + interesDecimal, periodoInversion);
             const resultado = `El monto final es de $${montoFinal.toFixed(2)}`;
 
             document.getElementById("resultado").textContent = resultado;

@@ -3,47 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mateo David Villalobos Bertel">
     <title>Ejercicio 3</title>
 </head>
 <body>
     <h1>Calculadora de Estadísticas</h1>
-    <p>Ingresa una lista de números separados por comas (por ejemplo: 12,15,20,25,30) y calcularemos la media, la mediana y la desviación estándar.</p>
+    <p>Ingresa una lista de números separados por comas para calcular la media, la mediana y la desviación estándar.</p>
     <input type="text" id="numerosInput">
     <button onclick="calcularEstadisticas()">Calcular</button>
 
-    <p id="resultadoMedia"></p>
-    <p id="resultadoMediana"></p>
-    <p id="resultadoDesviacion"></p>
+    <p id="resultMedia"></p>
+    <p id="resultMediana"></p>
+    <p id="resultDesviacion"></p>
 
     <script>
         function calcularEstadisticas() {
             const numerosInput = document.getElementById("numerosInput").value;
-            const numeros = numerosInput.split(',').map(Number);
+            const nums = numerosInput.split(',').map(Number);
 
-            if (numeros.length === 0 || numeros.some(isNaN)) {
+            if (nums.length == 0 || nums.some(isNaN)) {
                 alert("Ingresa una lista válida de números.");
                 return;
             }
 
-            const media = calcularMedia(numeros);
-            const mediana = calcularMediana(numeros);
-            const desviacion = calcularDesviacionEstandar(numeros);
+            const media = calcularMedia(nums);
+            const mediana = calcularMediana(nums);
+            const desviacion = calcularDesviacionEstandar(nums);
 
-            document.getElementById("resultadoMedia").textContent = `Media: ${media.toFixed(2)}`;
-            document.getElementById("resultadoMediana").textContent = `Mediana: ${mediana}`;
-            document.getElementById("resultadoDesviacion").textContent = `Desviación Estándar: ${desviacion.toFixed(2)}`;
+            document.getElementById("resultMedia").textContent = `Media: ${media.toFixed(2)}`;
+            document.getElementById("resultMediana").textContent = `Mediana: ${mediana}`;
+            document.getElementById("resultDesviacion").textContent = `Desviación Estándar: ${desviacion.toFixed(2)}`;
         }
 
-        function calcularMedia(numeros) {
-            const suma = numeros.reduce((total, num) => total + num, 0);
-            return suma / numeros.length;
+        function calcularMedia(nums) {
+            const suma = nums.reduce((total, num) => total + num, 0);
+            return suma / nums.length;
         }
 
-        function calcularMediana(numeros) {
-            const sortedNumeros = numeros.slice().sort((a, b) => a - b);
+        function calcularMediana(nums) {
+            const sortedNumeros = nums.slice().sort((a, b) => a - b);
             const middle = Math.floor(sortedNumeros.length / 2);
 
-            if (sortedNumeros.length % 2 === 0) {
+            if (sortedNumeros.length % 2 == 0) {
                 const lowerMiddle = sortedNumeros[middle - 1];
                 const upperMiddle = sortedNumeros[middle];
                 return (lowerMiddle + upperMiddle) / 2;
@@ -52,10 +53,10 @@
             }
         }
 
-        function calcularDesviacionEstandar(numeros) {
-            const media = calcularMedia(numeros);
-            const sumatoriaDiferenciasCuadradas = numeros.reduce((total, num) => total + Math.pow(num - media, 2), 0);
-            const varianza = sumatoriaDiferenciasCuadradas / numeros.length;
+        function calcularDesviacionEstandar(nums) {
+            const media = calcularMedia(nums);
+            const sumatoriaDiferenciasCuadradas = nums.reduce((total, num) => total + Math.pow(num - media, 2), 0);
+            const varianza = sumatoriaDiferenciasCuadradas / nums.length;
             return Math.sqrt(varianza);
         }
     </script>
